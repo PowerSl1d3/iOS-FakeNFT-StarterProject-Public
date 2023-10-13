@@ -46,10 +46,6 @@
 		A05952512AD9186A00BC1A90 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05952502AD9186A00BC1A90 /* ProfileTableViewCell.swift */; };
 		A05952532AD9187200BC1A90 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05952522AD9187200BC1A90 /* ProfileViewController.swift */; };
 		A05952552AD91B8500BC1A90 /* ProfileRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05952542AD91B8500BC1A90 /* ProfileRequests.swift */; };
-		4D142D932AD53BC00048BE2D /* RatingScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D142D952AD53BC00048BE2D /* RatingScreen.strings */; };
-		4D142D962AD53BC40048BE2D /* RatingScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D142D982AD53BC40048BE2D /* RatingScreen.strings */; };
-		900C9EAB2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */; };
-		900C9EA82AD7B138005E4BE9 /* NFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C9EA72AD7B138005E4BE9 /* NFT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,10 +107,6 @@
 		A05952502AD9186A00BC1A90 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		A05952522AD9187200BC1A90 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A05952542AD91B8500BC1A90 /* ProfileRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRequests.swift; sourceTree = "<group>"; };
-		4D142D972AD53BC40048BE2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/RatingScreen.strings; sourceTree = "<group>"; };
-		4D142D992AD53C040048BE2D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/RatingScreen.strings; sourceTree = "<group>"; };
-		900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
-		900C9EA72AD7B138005E4BE9 /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				A059522E2AD9166200BC1A90 /* Helpers */,
-				4D142D822AD3127E0048BE2D /* Resources */,
 				3F68069629CBBAF100B4F915 /* AppDelegate.swift */,
 				3F68069829CBBAF100B4F915 /* SceneDelegate.swift */,
 				3F478ECD29DB473000F6D39E /* DesignSystem */,
@@ -217,7 +208,6 @@
 			children = (
 				A059522B2AD913E300BC1A90 /* Profile */,
 				3FC8C38F29D245250081F015 /* Requests */,
-				900C9EA92AD7B173005E4BE9 /* Helpers */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -247,7 +237,6 @@
 		3F6806C929CBBCAF00B4F915 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				900C9EA62AD7B12F005E4BE9 /* Common */,
 				3F6806D829CC979D00B4F915 /* Network */,
 			);
 			path = Models;
@@ -424,45 +413,6 @@
 				A05952502AD9186A00BC1A90 /* ProfileTableViewCell.swift */,
 			);
 			path = Cell;
-		4D142D822AD3127E0048BE2D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4D142D842AD313710048BE2D /* ru */,
-				4D142D832AD313670048BE2D /* en */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		4D142D832AD313670048BE2D /* en */ = {
-			isa = PBXGroup;
-			children = (
-				4D142D982AD53BC40048BE2D /* RatingScreen.strings */,
-			);
-			path = en;
-			sourceTree = "<group>";
-		};
-		4D142D842AD313710048BE2D /* ru */ = {
-			isa = PBXGroup;
-			children = (
-				4D142D952AD53BC00048BE2D /* RatingScreen.strings */,
-			);
-			path = ru;
-			sourceTree = "<group>";
-		};
-		900C9EA92AD7B173005E4BE9 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */,
-			);
-			path = Helpers;
-            sourceTree = "<group>";
-        };
-		900C9EA62AD7B12F005E4BE9 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				900C9EA72AD7B138005E4BE9 /* NFT.swift */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -555,7 +505,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ru,
 			);
 			mainGroup = 3F68068A29CBBAF100B4F915;
 			packageReferences = (
@@ -580,10 +529,8 @@
 			files = (
 				A05952112AD9123F00BC1A90 /* Fonts in Resources */,
 				3F6806A329CBBAF200B4F915 /* LaunchScreen.storyboard in Resources */,
-				4D142D962AD53BC40048BE2D /* RatingScreen.strings in Resources */,
 				3F6806A029CBBAF200B4F915 /* Assets.xcassets in Resources */,
 				3F68069E29CBBAF100B4F915 /* Main.storyboard in Resources */,
-				4D142D932AD53BC00048BE2D /* RatingScreen.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,7 +567,6 @@
 				3F478ED129DB476500F6D39E /* Fonts.swift in Sources */,
 				3FC8C39329D246BA0081F015 /* DateFormatters+Presets.swift in Sources */,
 				A05952532AD9187200BC1A90 /* ProfileViewController.swift in Sources */,
-				900C9EA82AD7B138005E4BE9 /* NFT.swift in Sources */,
 				3F68069B29CBBAF100B4F915 /* ProductDetailsTableViewController.swift in Sources */,
 				A05952322AD9168100BC1A90 /* UIViewController+hideKeyboard.swift in Sources */,
 				3F6806D529CBBEC700B4F915 /* NetworkTask.swift in Sources */,
@@ -640,7 +586,6 @@
 				3F6806CB29CBBCC700B4F915 /* ExampleNetworkModel.swift in Sources */,
 				A05952452AD9180F00BC1A90 /* ProfileEditViewController.swift in Sources */,
 				3F6806D129CBBE6B00B4F915 /* NetworkClient.swift in Sources */,
-				900C9EAB2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,22 +637,6 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		4D142D952AD53BC00048BE2D /* RatingScreen.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D142D992AD53C040048BE2D /* ru */,
-			);
-			name = RatingScreen.strings;
-			sourceTree = "<group>";
-		};
-		4D142D982AD53BC40048BE2D /* RatingScreen.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D142D972AD53BC40048BE2D /* en */,
-			);
-			name = RatingScreen.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -715,7 +644,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -776,7 +704,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
