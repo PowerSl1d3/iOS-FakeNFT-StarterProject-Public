@@ -36,4 +36,43 @@ extension UIColor {
     static let textSecondary = UIColor.gray
     static let textOnPrimary = UIColor.white
     static let textOnSecondary = UIColor.black
+    
+    static let backgroundLightGray = UIColor(hexString: "F7F7F8")
+
+}
+
+// MARK: Common colors
+extension UIColor {
+    static let ypBlack = UIColor { traitCollection in
+        if traitCollection.userInterfaceStyle == .light {
+            return UIColor(hexString: "#1A1B22")
+        }
+
+        return UIColor(hexString: "#FFFFFF")
+    }
+
+    static let ypWhite = UIColor { traitCollection in
+        if traitCollection.userInterfaceStyle == .light {
+            return UIColor(hexString: "#FFFFFF")
+        }
+
+        return UIColor(hexString: "#1A1B22")
+    }
+
+    static let ypLightGray = UIColor { traitCollection in
+        if traitCollection.userInterfaceStyle == .light {
+            return UIColor(hexString: "#F7F7F8")
+        }
+
+        return UIColor(hexString: "#2C2C2E")
+    }
+
+    static let ypGrayUniversal = UIColor(hexString: "#625C5C")
+    static let ypRedUniversal = UIColor(hexString: "#F56B6C")
+    static let ypBackgroundUniversal = UIColor(hexString: "#1A1B22")
+    static let ypGreenUniversal = UIColor(hexString: "#1C9F00")
+    static let ypBlueUniversal = UIColor(hexString: "#0A84FF")
+    static let ypBlackUniversal = UIColor(hexString: "#1A1B22")
+    static let ypWhiteUniversal = UIColor(hexString: "#FFFFFF")
+    static let ypYellowUniversal = UIColor(hexString: "#FEEF0D")
 }
