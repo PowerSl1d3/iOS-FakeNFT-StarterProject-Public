@@ -29,8 +29,8 @@
 		3FC8C39329D246BA0081F015 /* DateFormatters+Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8C39229D246BA0081F015 /* DateFormatters+Presets.swift */; };
 		4D142D932AD53BC00048BE2D /* RatingScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D142D952AD53BC00048BE2D /* RatingScreen.strings */; };
 		4D142D962AD53BC40048BE2D /* RatingScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D142D982AD53BC40048BE2D /* RatingScreen.strings */; };
-		900C9EAB2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */; };
 		900C9EA82AD7B138005E4BE9 /* NFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C9EA72AD7B138005E4BE9 /* NFT.swift */; };
+		900C9EAB2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +75,11 @@
 		3FC8C39229D246BA0081F015 /* DateFormatters+Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatters+Presets.swift"; sourceTree = "<group>"; };
 		4D142D972AD53BC40048BE2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/RatingScreen.strings; sourceTree = "<group>"; };
 		4D142D992AD53C040048BE2D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/RatingScreen.strings; sourceTree = "<group>"; };
-		900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
 		900C9EA72AD7B138005E4BE9 /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
+		900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
+		A037CB9B2AD96842008A1BB2 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		A037CB9C2AD96846008A1BB2 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		A037CB9D2AD9684A008A1BB2 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,7 @@
 		3F478ECD29DB473000F6D39E /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				A037CB9A2AD96827008A1BB2 /* Fonts */,
 				3F478ECE29DB474E00F6D39E /* Colors.swift */,
 				3F478ED029DB476500F6D39E /* Fonts.swift */,
 			);
@@ -266,20 +270,30 @@
 			path = ru;
 			sourceTree = "<group>";
 		};
-		900C9EA92AD7B173005E4BE9 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */,
-			);
-			path = Helpers;
-            sourceTree = "<group>";
-        };
 		900C9EA62AD7B12F005E4BE9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				900C9EA72AD7B138005E4BE9 /* NFT.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		900C9EA92AD7B173005E4BE9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A037CB9A2AD96827008A1BB2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A037CB9B2AD96842008A1BB2 /* SF-Pro-Text-Bold.otf */,
+				A037CB9C2AD96846008A1BB2 /* SF-Pro-Text-Medium.otf */,
+				A037CB9D2AD9684A008A1BB2 /* SF-Pro-Text-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
