@@ -118,14 +118,14 @@
                         <segue destination="6i5-Qt-ukh" kind="relationship" relationship="viewControllers" id="T9j-PL-Yhv"/>
                         <segue destination="lvU-bz-Vrw" kind="relationship" relationship="viewControllers" id="UQk-8s-8v2"/>
                         <segue destination="ZuB-kp-v3h" kind="relationship" relationship="viewControllers" id="z6Y-lX-f3f"/>
-                        <segue destination="qg2-Az-O78" kind="relationship" relationship="viewControllers" id="HDa-tO-gwF"/>
+                        <segue destination="80Q-BS-j84" kind="relationship" relationship="viewControllers" id="HDa-tO-gwF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RxO-nu-FuZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-350" y="-784"/>
         </scene>
-        <!--Статистика-->
+        <!--Rating View Controller-->
         <scene sceneID="3mo-mi-MIz">
             <objects>
                 <viewController id="qg2-Az-O78" customClass="RatingViewController" customModule="FakeNFT" customModuleProvider="target" sceneMemberID="viewController">
@@ -135,11 +135,30 @@
                         <viewLayoutGuide key="safeArea" id="5Kp-Ha-3xc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Статистика" image="flag.2.crossed.fill" catalog="system" id="xgD-9Y-EGT"/>
+                    <navigationItem key="navigationItem" id="uCR-cD-C2c"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lQ-it-xtI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="941" y="50"/>
+            <point key="canvasLocation" x="1866.4122137404579" y="50"/>
+        </scene>
+        <!--Статистика-->
+        <scene sceneID="OnD-5X-BYa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="80Q-BS-j84" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Статистика" image="flag.2.crossed.fill" catalog="system" id="xgD-9Y-EGT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="chL-q1-hWS">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qg2-Az-O78" kind="relationship" relationship="rootViewController" id="giK-7m-zu5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uh7-aO-KuD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="939.69465648854953" y="50"/>
         </scene>
     </scenes>
     <resources>

@@ -32,18 +32,6 @@ protocol RatingViewPresenterDelegate: AnyObject {
     func loadUserFinished()
 }
 
-//struct ListUsersRequest: NetworkRequest {
-//    var endpoint: URL?
-//
-//    init(nextPage: Int, usersPerPage: Int, sortParameter: UsersSortParameter, sortOrder: UsersSortOrder) {
-//        endpoint = URL(string: "https://651ff00f906e276284c3bfac.mockapi.io/api/v1/users" + "?sortBy=\(sortParameter.rawValue)&order=\(sortOrder.rawValue)&page=\(nextPage)&limit=\(usersPerPage)")
-//    }
-//
-////    init(nextPage: Int, usersPerPage: Int, sortParameter: UsersSortParameter, sortOrder: UsersSortOrder) {
-////        endpoint = URL(string: "https://651ff00f906e276284c3bfac.mockapi.io/api/v1/users" + "?&page=\(nextPage)&limit=\(usersPerPage)")
-////    }
-//}
-
 final class RatingViewPresenter: RatingViewPresenterProtocol {
     private var sortParameter = UsersSortParameter.byRating
     private var sortOrder = UsersSortOrder.asc

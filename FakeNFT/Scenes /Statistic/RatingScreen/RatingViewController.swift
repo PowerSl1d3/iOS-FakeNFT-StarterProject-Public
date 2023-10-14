@@ -33,17 +33,6 @@ final class RatingViewController: UIViewController {
         return presenter
     }()
     
-    lazy private var sortButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "sortIcon"), for: .normal)
-        button.backgroundColor = .background
-        
-        button.addTarget(self, action: #selector(didTapSortButton), for: .touchUpInside)
-        
-        return button
-    }()
-    
     lazy private var table: UITableView = {
         let table = UITableView()
         table.rowHeight = rowHeight
@@ -62,21 +51,28 @@ final class RatingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(sortButton)
+        setupNavBar()
+        
         view.addSubview(table)
         
         setupConstraints()
         presenter.listUsers()
     }
-            
+    func setupNavBar() {
+       let rightBarButtonItem = UIBarButtonItem(
+           image: UIImage(named: "sortIcon"),
+           style: .plain,
+           target: self,
+           action: #selector(didTapSortButton)
+       )
+       rightBarButtonItem.tintColor = .black
+
+       navigationItem.setRightBarButton(rightBarButtonItem, animated: false)
+   }
+    
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            sortButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            sortButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding),
-            sortButton.widthAnchor.constraint(equalToConstant: 42),
-            sortButton.heightAnchor.constraint(equalToConstant: 42),
-            
-            table.topAnchor.constraint(equalTo: sortButton.bottomAnchor, constant: 20),
+            table.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             table.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding),
             table.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding),
             table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -97,6 +93,7 @@ extension RatingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = RatingCell()
+        cell.selectionStyle = .none
         
         if indexPath.row >= presenter.users.count {
             assertionFailure("configCell: indexPath.row >= users.count")
@@ -116,7 +113,14 @@ extension RatingViewController: UITableViewDataSource {
 
 extension RatingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row >= presenter.users.count {
+            assertionFailure("didSelectRowAt: indexPath.row >= users.count")
+            return
+        }
         
+        let profileVC = ProfileViewController(user: presenter.users[indexPath.row])
+        
+        navigationController!.pushViewController(profileVC, animated: true)
     }
 }
 

@@ -34,6 +34,9 @@
 		4D5902E72AD7C903009F3756 /* RatingViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5902E32AD7C903009F3756 /* RatingViewPresenter.swift */; };
 		4D5902E82AD7C903009F3756 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5902E42AD7C903009F3756 /* RatingViewController.swift */; };
 		4D5902EB2AD815E6009F3756 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5902EA2AD815E6009F3756 /* UserService.swift */; };
+		4D5902F22AD9554C009F3756 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5902F12AD9554C009F3756 /* ProfileViewController.swift */; };
+		4D5902F92AD9D19A009F3756 /* StatisticProfileScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D5902FB2AD9D19A009F3756 /* StatisticProfileScreen.strings */; };
+		4D5902FC2AD9D1A0009F3756 /* StatisticProfileScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D5902FE2AD9D1A0009F3756 /* StatisticProfileScreen.strings */; };
 		900C9EA82AD7B138005E4BE9 /* NFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C9EA72AD7B138005E4BE9 /* NFT.swift */; };
 		900C9EAB2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +88,9 @@
 		4D5902E32AD7C903009F3756 /* RatingViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewPresenter.swift; sourceTree = "<group>"; };
 		4D5902E42AD7C903009F3756 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		4D5902EA2AD815E6009F3756 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		4D5902F12AD9554C009F3756 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		4D5902FA2AD9D19A009F3756 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/StatisticProfileScreen.strings; sourceTree = "<group>"; };
+		4D5902FD2AD9D1A0009F3756 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StatisticProfileScreen.strings; sourceTree = "<group>"; };
 		900C9EA72AD7B138005E4BE9 /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
 		900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -267,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				4D142D982AD53BC40048BE2D /* RatingScreen.strings */,
+				4D5902FE2AD9D1A0009F3756 /* StatisticProfileScreen.strings */,
 			);
 			path = en;
 			sourceTree = "<group>";
@@ -275,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				4D142D952AD53BC00048BE2D /* RatingScreen.strings */,
+				4D5902FB2AD9D19A009F3756 /* StatisticProfileScreen.strings */,
 			);
 			path = ru;
 			sourceTree = "<group>";
@@ -290,6 +298,7 @@
 		4D5902DE2AD7C903009F3756 /* Statistic */ = {
 			isa = PBXGroup;
 			children = (
+				4D5902F02AD95532009F3756 /* ProfileScreen */,
 				4D5902E12AD7C903009F3756 /* RatingScreen */,
 			);
 			path = Statistic;
@@ -311,6 +320,14 @@
 				4D5902EA2AD815E6009F3756 /* UserService.swift */,
 			);
 			path = Statistic;
+			sourceTree = "<group>";
+		};
+		4D5902F02AD95532009F3756 /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4D5902F12AD9554C009F3756 /* ProfileViewController.swift */,
+			);
+			path = ProfileScreen;
 			sourceTree = "<group>";
 		};
 		900C9EA62AD7B12F005E4BE9 /* Common */ = {
@@ -443,10 +460,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F6806A329CBBAF200B4F915 /* LaunchScreen.storyboard in Resources */,
+				4D5902F92AD9D19A009F3756 /* StatisticProfileScreen.strings in Resources */,
 				4D142D962AD53BC40048BE2D /* RatingScreen.strings in Resources */,
 				3F6806A029CBBAF200B4F915 /* Assets.xcassets in Resources */,
 				3F68069E29CBBAF100B4F915 /* Main.storyboard in Resources */,
 				4D142D932AD53BC00048BE2D /* RatingScreen.strings in Resources */,
+				4D5902FC2AD9D1A0009F3756 /* StatisticProfileScreen.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +508,7 @@
 				3F6806D329CBBE9600B4F915 /* NetworkRequest.swift in Sources */,
 				4D5902EB2AD815E6009F3756 /* UserService.swift in Sources */,
 				3F6806CB29CBBCC700B4F915 /* ExampleNetworkModel.swift in Sources */,
+				4D5902F22AD9554C009F3756 /* ProfileViewController.swift in Sources */,
 				3F6806D129CBBE6B00B4F915 /* NetworkClient.swift in Sources */,
 				900C9EAB2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift in Sources */,
 			);
@@ -556,6 +576,22 @@
 				4D142D972AD53BC40048BE2D /* en */,
 			);
 			name = RatingScreen.strings;
+			sourceTree = "<group>";
+		};
+		4D5902FB2AD9D19A009F3756 /* StatisticProfileScreen.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D5902FA2AD9D19A009F3756 /* ru */,
+			);
+			name = StatisticProfileScreen.strings;
+			sourceTree = "<group>";
+		};
+		4D5902FE2AD9D1A0009F3756 /* StatisticProfileScreen.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D5902FD2AD9D1A0009F3756 /* en */,
+			);
+			name = StatisticProfileScreen.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
