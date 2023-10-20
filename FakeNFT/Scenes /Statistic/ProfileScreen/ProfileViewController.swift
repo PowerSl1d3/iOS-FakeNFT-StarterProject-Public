@@ -96,6 +96,7 @@ final class ProfileViewController: UIViewController {
             nftcCllectionLabel.trailingAnchor.constraint(lessThanOrEqualTo: imageView.leadingAnchor),
         ])
         
+
         return view
     }()
     

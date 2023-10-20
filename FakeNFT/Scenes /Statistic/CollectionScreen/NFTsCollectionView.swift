@@ -50,6 +50,15 @@ final class NFTsCollectionView: UIViewController {
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backButton")
         navigationController?.navigationBar.topItem?.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .ypBlack
+        
+        navigationController?.title = NSLocalizedString("nav.bar.title", tableName: "CollectionScreen", comment: "")
+        let attrs = [
+            NSAttributedString.Key.foregroundColor: UIColor.ypBlack,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)
+        ]
+        UINavigationBar.appearance().titleTextAttributes = attrs
+        
+        
         navigationController?.title = NSLocalizedString("nav.bar.title", tableName: "CollectionScreen", comment: "")
     }
 }
