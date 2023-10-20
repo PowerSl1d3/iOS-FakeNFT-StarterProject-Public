@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProfileViewPresenterProtocol {
     func didTapProfileWebsite()
+    func didTapNFTsCollection()
     func setImage()
 }
 
@@ -18,7 +19,7 @@ protocol ProfileViewPresenterDelegateProtocol: AnyObject {
     var avatarView: UIImageView { get set }
     
     func showAlert(alert: AlertModel)
-    func showWebView(_ webView: UIViewController)
+    func showViewController(_ viewController: UIViewController)
     func closeWebView()
 }
 
@@ -49,7 +50,12 @@ final class ProfileViewPresenter: ProfileViewPresenterProtocol {
         let webViewController = WebViewController(with: url, output: self)
         self.webViewController = webViewController
         
-        delegate.showWebView(webViewController)
+        delegate.showViewController(webViewController)
+    }
+    
+    func didTapNFTsCollection() {
+        let collectionVC = NFTsCollectionView(nfts: delegate?.user.nfts ?? [])
+        delegate?.showViewController(collectionVC)
     }
     
     func setImage() {
