@@ -53,8 +53,6 @@ final class UserService: UserServiceProtocol {
             sortOrder: sortOrder
         )
      
-        let networkClient = DefaultNetworkClient()
-        
         dataTask = networkClient.send(request: req, type: [User].self) {[weak self] (result: Result<[User], Error>) in
             guard let self = self else {
                 assertionFailure("listUser: self is empty")

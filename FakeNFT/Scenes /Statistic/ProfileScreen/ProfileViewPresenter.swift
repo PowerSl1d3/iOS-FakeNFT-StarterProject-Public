@@ -54,7 +54,12 @@ final class ProfileViewPresenter: ProfileViewPresenterProtocol {
     }
     
     func didTapNFTsCollection() {
+        let collectionPresenter = NFTCollectionPresenter(nftService: NFTService(networkClient: DefaultNetworkClient()))
         let collectionVC = NFTsCollectionView(nfts: delegate?.user.nfts ?? [])
+        
+        collectionVC.presenter = collectionPresenter
+        collectionPresenter.delegate = collectionVC
+        
         delegate?.showViewController(collectionVC)
     }
     
