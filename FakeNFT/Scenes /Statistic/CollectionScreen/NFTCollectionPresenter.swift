@@ -22,11 +22,28 @@ protocol NFTCollectionPresenterProtocol {
 }
 
 final class NFTCollectionPresenter: NFTCollectionPresenterProtocol {
+    var profile: Profile?
+    
     var nftService: NFTServiceProtocol
+    var profileService: ProfileServiceProtocol
     weak var delegate: NFTCollectionPresenterDelegateProtocol?
     
-    init(nftService: NFTServiceProtocol) {
+    init(nftService: NFTServiceProtocol, profileService: ProfileServiceProtocol) {
         self.nftService = nftService
+        self.profileService = profileService
+        
+        //TODO: вынести айди профайла
+        profileService.getProfile(profileID: "1") { (result: Result<Profile, Error>) in
+            switch result {
+            case .failure(let error):
+                print("failed to get profile \(error)")
+                //TODO: show alert
+                return
+            case .success(let profile):
+                print(profile)
+                self.profile = profile
+            }
+        }
     }
     
     func listNFTs(nftIDs: [String]) {

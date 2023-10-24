@@ -127,7 +127,7 @@ extension NFTsCollectionView: UICollectionViewDelegateFlowLayout {
         let availableWidth = collectionView.frame.width - (16 + 16)
         let cellWidth =  availableWidth / 3
   
-        return CGSize(width: cellWidth, height: cellWidth + 56)
+        return CGSize(width: cellWidth, height: cellWidth + 56 + 8)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
