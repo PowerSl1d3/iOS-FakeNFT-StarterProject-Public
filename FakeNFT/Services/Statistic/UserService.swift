@@ -18,11 +18,13 @@ protocol UserServiceProtocol {
 }
 
 struct ListUsersRequest: NetworkRequest {
+    private var path = "/api/v1/users"
+    
     var endpoint: URL?
     
     init(nextPage: Int, usersPerPage: Int, sortParameter: UsersSortParameter, sortOrder: UsersSortOrder) {
-        guard let url = URL(string: listUsersPath, relativeTo: baseURL) else {
-            assertionFailure("failed to create url from baseURL: \(String(describing: baseURL?.absoluteString)), path: \(listUsersPath)")
+        guard let url = URL(string: path, relativeTo: baseURL) else {
+            assertionFailure("failed to create url from baseURL: \(String(describing: baseURL?.absoluteString)), path: \(path)")
             return
         }
         

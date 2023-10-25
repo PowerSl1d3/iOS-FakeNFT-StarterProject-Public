@@ -58,9 +58,8 @@ final class ProfileViewPresenter: ProfileViewPresenterProtocol {
             nftService: NFTService(networkClient: DefaultNetworkClient()),
             profileService: ProfileService(networkClient: DefaultNetworkClient())
         )
-        let collectionVC = NFTsCollectionView(nfts: delegate?.user.nfts ?? [])
+        let collectionVC = NFTsCollectionView(nfts: delegate?.user.nfts ?? [], presenter: collectionPresenter)
         
-        collectionVC.presenter = collectionPresenter
         collectionPresenter.delegate = collectionVC
         
         delegate?.showViewController(collectionVC)

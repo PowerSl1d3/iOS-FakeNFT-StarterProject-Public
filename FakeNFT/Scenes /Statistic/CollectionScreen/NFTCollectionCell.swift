@@ -8,29 +8,31 @@
 import Foundation
 import UIKit
 
+protocol NFTCollectionCellDelegate {
+    func didTapLikeButton(isLike: Bool, indexPath: IndexPath)
+}
+
 final class NFTCollectionCell: UICollectionViewCell {
-    private let imagePlaceholder = UIImage(named: "unknownImage")
+    var delegate: NFTCollectionCellDelegate?
+    var indexPath: IndexPath?
     
-    private lazy var imageView: UIImageView = {
+    private var isLike: Bool = false
+    
+    lazy private var likeButton: UIButton = {
         let like = UIButton()
         //  TODO: добавлять картинку в зависимости от FavoriteNFTService
-        like.setImage(UIImage(named: "unlike"), for: .normal)
+        like.setImage(unlikeImage, for: .normal)
         like.translatesAutoresizingMaskIntoConstraints = false
         like.addTarget(self, action: #selector(didTapLkeButton), for: .touchUpInside)
-        
+
+        return like
+    }()
+    
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView(image: imagePlaceholder)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
-        
-        imageView.addSubview(like)
-
-        NSLayoutConstraint.activate([
-            like.heightAnchor.constraint(equalToConstant: 40),
-            like.widthAnchor.constraint(equalToConstant: 40),
-            like.topAnchor.constraint(equalTo: imageView.topAnchor),
-            like.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-        ])
         
         return imageView
     }()
@@ -76,6 +78,8 @@ final class NFTCollectionCell: UICollectionViewCell {
         super.init(frame: frame)
         
         contentView.addSubview(imageView)
+        imageView.addSubview(likeButton)
+        imageView.isUserInteractionEnabled = true
         contentView.addSubview(starsButton)
         contentView.addSubview(basketIcon)
         
@@ -86,7 +90,6 @@ final class NFTCollectionCell: UICollectionViewCell {
         
         contentView.clipsToBounds = true
        
-        
         stack.addSubview(nameLabel)
         stack.addSubview(priceLabel)
         
@@ -96,6 +99,11 @@ final class NFTCollectionCell: UICollectionViewCell {
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.heightAnchor.constraint(equalToConstant: contentView.frame.width),
 
+            likeButton.heightAnchor.constraint(equalToConstant: 40),
+            likeButton.widthAnchor.constraint(equalToConstant: 40),
+            likeButton.topAnchor.constraint(equalTo: imageView.topAnchor),
+            likeButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            
             starsButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             starsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             starsButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
@@ -125,24 +133,37 @@ final class NFTCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(nft: NFT) {
-        print("confugure \(nft.id)")
-        starsButton.setImage(UIImage(named: "star" + (nft.rating.description)), for: .normal)
-        nameLabel.text = nft.name
-        priceLabel.text = (nft.price.description) + " ETH"
+    func configure(nftVM: NFTViewModel) {
+        isLike = nftVM.isLike
         
+        starsButton.setImage(UIImage(named: "star" + (nftVM.nft.rating.description)), for: .normal)
+        nameLabel.text = nftVM.nft.name
+        priceLabel.text = (nftVM.nft.price.description) + " ETH"
+        
+        likeButton.setImage(isLike ? likeImage : unlikeImage, for: .normal)
+ 
         guard
-            let urlString = nft.images.first,
+            let urlString = nftVM.nft.images.first,
             let url = URL(string: urlString)
         else {
-            print("failed to load image from \(nft.images)")
+            print("failed to load image from \(nftVM.nft.images)")
             return
         }
         
         imageView.kf.setImage(with: url, placeholder: imagePlaceholder)
     }
     
-    @objc func didTapLkeButton() {}
+    @objc private func didTapLkeButton() {
+        guard let indexPath = indexPath else {
+            assertionFailure("didTapLkeButton: indexPath is empty")
+            return
+        }
+        
+        self.isLike = !isLike
+        delegate?.didTapLikeButton(isLike: self.isLike, indexPath: indexPath)
+    }
     
-    @objc func didTapStars() {}
+    @objc private func didTapStars() {
+        print("!!!!!!!! didTapStars !!!!!!!!!!!")
+    }
 }

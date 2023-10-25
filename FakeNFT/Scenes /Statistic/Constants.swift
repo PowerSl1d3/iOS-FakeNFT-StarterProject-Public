@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 let baseURL = URL(string: "https://651ff00f906e276284c3bfac.mockapi.io")
 
-let listUsersPath = "/api/v1/users"
-let getProfilePath = "/api/v1/profile"
-let updateProfilePath = "/api/v1/profile"
+let imagePlaceholder = UIImage(named: "unknownImage")
+let likeImage = UIImage(named: "like")
+let unlikeImage = UIImage(named: "unlike")

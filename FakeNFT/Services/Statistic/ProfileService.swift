@@ -13,11 +13,13 @@ protocol ProfileServiceProtocol {
 }
 
 struct GetProfileRequest: NetworkRequest {
+    private var path = "/api/v1/profile"
+    
     var endpoint: URL?
     
     init(profileID: String) {
-        guard let url = URL(string: "\(getProfilePath)/\(profileID)", relativeTo: baseURL) else {
-            assertionFailure("failed to create url from baseURL: \(String(describing: baseURL?.absoluteString)), path: \(getProfilePath)")
+        guard let url = URL(string: "\(path)/\(profileID)", relativeTo: baseURL) else {
+            assertionFailure("failed to create url from baseURL: \(String(describing: baseURL?.absoluteString)), path: \(path)")
             return
         }
 
@@ -25,28 +27,23 @@ struct GetProfileRequest: NetworkRequest {
     }
 }
 
-struct UpdateUserRequest: NetworkRequest {
+struct UpdateProfileRequest: NetworkRequest {
+    private var path = "/api/v1/profile"
+    
     var endpoint: URL?
+    var httpMethod: HttpMethod
+    var dto: Encodable?
     
     init(updateProfile: Profile) {
-        guard let url = URL(string: updateProfilePath, relativeTo: baseURL) else {
-            assertionFailure("failed to create url from baseURL: \(String(describing: baseURL?.absoluteString)), path: \(updateProfilePath)")
+        self.httpMethod = .put
+        self.dto = updateProfile
+        
+        guard let url = URL(string: "\(path)/\(updateProfile.id)", relativeTo: baseURL) else {
+            assertionFailure("failed to create url from baseURL: \(String(describing: baseURL?.absoluteString)), path: \(path)")
             return
         }
-        
-        var urlComponents = URLComponents(string: url.absoluteString)
 
-        let likesQueryItem = updateProfile.likes.map { URLQueryItem(name: "likes", value: $0) }
-        var queryItems: [URLQueryItem] = [
-            URLQueryItem(name: "name", value: updateProfile.name),
-            URLQueryItem(name: "description", value: updateProfile.description),
-            URLQueryItem(name: "website", value: updateProfile.website),
-        ]
-        queryItems.append(contentsOf: likesQueryItem)
-        
-        urlComponents?.queryItems = queryItems
-        
-        endpoint = urlComponents?.url
+        self.endpoint = url
     }
 }
 
@@ -60,25 +57,15 @@ final class ProfileService: ProfileServiceProtocol {
     func getProfile(profileID: String, _ handler: @escaping (Result<Profile, Error>) -> Void) {
         let req = GetProfileRequest(profileID: profileID)
         
-        networkClient.send(request: req, type: Profile.self) { [weak self] (result: Result<Profile, Error>) in
-            guard let self = self else {
-                assertionFailure("getProfile: self is empty")
-                return
-            }
-
+        networkClient.send(request: req, type: Profile.self) { (result: Result<Profile, Error>) in
             handler(result)
         }
     }
     
     func updateProfile(profile: Profile, _ handler: @escaping (Result<Profile, Error>) -> Void) {
-        let req = UpdateUserRequest(updateProfile: profile)
+        let req = UpdateProfileRequest(updateProfile: profile)
         
-        networkClient.send(request: req, type: Profile.self) { [weak self] (result: Result<Profile, Error>) in
-            guard let self = self else {
-                assertionFailure("getProfile: self is empty")
-                return
-            }
-
+        networkClient.send(request: req, type: Profile.self) { (result: Result<Profile, Error>) in
             handler(result)
         }
     }

@@ -11,9 +11,8 @@ import UIKit
 final class NFTsCollectionView: UIViewController {
     private let cellReusableIdentifier = "reusableCell123"
     private let nftIDs: [String]
-    private var nfts: [NFT]?
     
-    var presenter: NFTCollectionPresenterProtocol?
+    private var presenter: NFTCollectionPresenterProtocol
     
     lazy private var collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -28,8 +27,9 @@ final class NFTsCollectionView: UIViewController {
         return collection
     }()
     
-    init(nfts: [String]) {
+    init(nfts: [String], presenter: NFTCollectionPresenterProtocol) {
         self.nftIDs = nfts
+        self.presenter = presenter
         
         print(nftIDs)
         
@@ -57,7 +57,7 @@ final class NFTsCollectionView: UIViewController {
 
         UIBlockingProgressHUD.show()
         
-        presenter?.listNFTs(nftIDs: nftIDs)
+        presenter.loadData(nftIDs: nftIDs)
     }
     
     func setupNavBar() {
@@ -84,39 +84,36 @@ extension NFTsCollectionView: NFTCollectionPresenterDelegateProtocol {
     
     }
     
-    func setNFTs(nfts: [NFT]) {
-        self.nfts = nfts
-    }
-    
     func reloadData() {
         UIBlockingProgressHUD.dismiss()
-        
-        print("before reload count : \(self.nfts?.count ?? 0)")
         collectionView.reloadData()
      }
+    
+    func reloadCell(by indexPath: IndexPath) {
+        collectionView.reloadItems(at: [indexPath])
+    }
 }
 
 extension NFTsCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return nfts?.count ?? 0
+        return presenter.nftViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReusableIdentifier, for: indexPath)
         
-        guard
-            let nfts = nfts,
-            let nftCell = cell as? NFTCollectionCell
-        else {
+        guard let nftCell = cell as? NFTCollectionCell else {
             return UICollectionViewCell()
         }
         
-        if indexPath.row >= nfts.count {
+        if indexPath.row >= presenter.nftViewModels.count {
             assertionFailure("configCell: indexPath.row >= nfts.count")
             return UICollectionViewCell()
         }
         
-        nftCell.configure(nft: nfts[indexPath.row])
+        nftCell.indexPath = indexPath
+        nftCell.delegate = self
+        nftCell.configure(nftVM: presenter.nftViewModels[indexPath.row])
         
         return nftCell
     }
@@ -132,5 +129,11 @@ extension NFTsCollectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 28
+    }
+}
+
+extension NFTsCollectionView: NFTCollectionCellDelegate {
+    func didTapLikeButton(isLike: Bool, indexPath: IndexPath) {
+        presenter.likeNFT(isLike: isLike, indexPath: indexPath)
     }
 }
