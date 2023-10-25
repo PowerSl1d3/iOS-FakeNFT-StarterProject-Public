@@ -218,6 +218,7 @@
 				4D8CEE852ADE613700556FD7 /* Statistic */,
 				3FC8C38F29D245250081F015 /* Requests */,
 				900C9EA92AD7B173005E4BE9 /* Helpers */,
+				906C2BF72AE360DF00659B03 /* Loaders */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -380,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				900C9EA72AD7B138005E4BE9 /* NFT.swift */,
+				906C2BF52AE3604600659B03 /* ShoppingOrder.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -389,8 +391,17 @@
 			children = (
 				CADBD6FA2ADD3E8E002D0CC0 /* AlertPresenter.swift */,
 				900C9EAA2AD7B188005E4BE9 /* UIBlockingProgressHUD.swift */,
+				906C2BF82AE361DA00659B03 /* ShoppingOrderService.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		906C2BF72AE360DF00659B03 /* Loaders */ = {
+			isa = PBXGroup;
+			children = (
+				909358E22AE35F810052C5A4 /* ShoppingBagLoader.swift */,
+			);
+			path = Loaders;
 			sourceTree = "<group>";
 		};
 		908CF2572AD9654E0028EEB4 /* Common */ = {
