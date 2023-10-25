@@ -31,11 +31,17 @@ final class NFTCollectionPresenter: NFTCollectionPresenterProtocol {
     
     var nftService: NFTServiceProtocol
     var profileService: ProfileServiceProtocol
+    var shoppingOrderService: ShoppingOrderService
     weak var delegate: NFTCollectionPresenterDelegateProtocol?
     
-    init(nftService: NFTServiceProtocol, profileService: ProfileServiceProtocol) {
+    init(
+        nftService: NFTServiceProtocol,
+        profileService: ProfileServiceProtocol,
+        shopingOrderService: ShoppingOrderService
+    ) {
         self.nftService = nftService
         self.profileService = profileService
+        self.shoppingOrderService = shopingOrderService
     }
     
     func loadData(nftIDs: [String]) {
@@ -60,6 +66,8 @@ final class NFTCollectionPresenter: NFTCollectionPresenterProtocol {
             group.leave()
         }
 
+        group.enter()
+        shoppingOrderService.loadShoppingOrder()
         
         for nftID in nftIDs {
             group.enter()
@@ -122,5 +130,19 @@ final class NFTCollectionPresenter: NFTCollectionPresenterProtocol {
         let nftVM = NFTViewModel(nft: nft, isLike: likes.contains(nft.id), inOrder: false)
         
         return nftVM
+    }
+}
+
+extension NFTCollectionPresenter: ShoppingOrderServiceDelegate {
+    func didLoadShoppingOrder(_ shoppingOrder: ShoppingOrder?) {
+        <#code#>
+    }
+    
+    func didAddNFTFromOrder(_ newShoppingOrder: ShoppingOrder?) {
+        <#code#>
+    }
+    
+    func didRemoveNFTFromOrder(_ newShoppingOrder: ShoppingOrder?) {
+        <#code#>
     }
 }
